@@ -26,7 +26,7 @@ The "2-condition-triggerbot" project, powered by Kmbox, is an application design
 Clone the repository from GitHub:
 
 ```
-git clone https://github.com/ozymotv/2-condition-triggerbot.git
+git clone https://github.com/ozymotv/2CT.git
 ```
 Install required Python packages:
 
