@@ -1,0 +1,13 @@
+{
+  "ip": "192.168.2.188",
+  "port": "16896",
+  "uid": "46405C53",
+  "trigger_delay": 0,
+  "base_delay": 0,
+  "color_tolerance": 70,
+  "target_color": [250, 100, 250],
+  "scope_color": [0, 255, 0],
+  "scope_color_tolerance": 40,
+  "scope_color_alt": [255, 255, 0],
+  "scope_color_tolerance_alt": 40
+}
