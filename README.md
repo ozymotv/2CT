@@ -58,10 +58,10 @@ cd 2-condition-triggerbot
 3. Adjust crosshair colors:
 + Primary crosshair: Cyan
 + Aimdownsight and Sniper: Green
-  
+
+![Screenshot (1)](https://github.com/OzymoGit/2-condition-triggerbot/assets/33122491/fe5a5bcb-74fd-41d7-9336-4de2a3bb6f64)  
 ![Screenshot (2)](https://github.com/OzymoGit/2-condition-triggerbot/assets/33122491/da8a76a0-7409-4225-9271-9c3af41d7581)
 ![Screenshot (3)](https://github.com/OzymoGit/2-condition-triggerbot/assets/33122491/7d8393ca-1b16-4159-bc15-71d1c4f362f7)
-![Screenshot (1)](https://github.com/OzymoGit/2-condition-triggerbot/assets/33122491/fe5a5bcb-74fd-41d7-9336-4de2a3bb6f64)
 
 Turn on "Movement error", "Firing error", multiplier to 3 times
 
