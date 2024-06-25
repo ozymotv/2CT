@@ -16,21 +16,25 @@ The "2-condition-triggerbot" project is an educational tool designed to demonstr
  
 ### Key Features:
 
-Configurable Settings: Easily customize the bot’s behavior through the config.json file, including network settings, color tolerance, and delay parameters.
-Real-time Screen Capture: Utilizes mss for efficient screen capture of a small zone around the crosshair to minimize performance impact.
-Color Detection: Detects the presence of specific target and scope colors within the capture zone to determine when to shoot.
-Adjustable Trigger Delay: Fine-tune the bot’s shooting speed with adjustable delay settings to match different game requirements.
-Keyboard Controls: Control the bot with simple hotkeys:
-Press F2 to exit the program.
-Press F3 to pause/continue the bot.
-Press F4 to reload the configuration.
++ Configurable Settings: Easily customize the bot’s behavior through the config.json file, including network settings, color tolerance, and delay parameters.
+  
++ Real-time Screen Capture: Utilizes mss for efficient screen capture of a small zone around the crosshair to minimize performance impact.
+
++ Color Detection: Detects the presence of specific target and scope colors within the capture zone to determine when to shoot.
+
++ Adjustable Trigger Delay: Fine-tune the bot’s shooting speed with adjustable delay settings to match different game requirements.
+
++ Keyboard Controls: Control the bot with simple hotkeys:
 
 ### How It Works:
 
 + Initialization: The bot initializes by loading the configuration, setting up network communication with kmNet, and defining the screen capture zone.
-Screen Capture and Processing: Continuously captures a small portion of the screen around the crosshair, checking for specific colors that indicate a target or scoped-in state.
+
++ Screen Capture and Processing: Continuously captures a small portion of the screen around the crosshair, checking for specific colors that indicate a target or scoped-in state.
+
 + Trigger Mechanism: When both conditions (target detected and scoped-in) are met, the bot simulates a mouse click to shoot, with a customizable delay to mimic human reaction times.
-Keyboard Listener: Runs in a separate thread to allow the user to pause, reload the configuration, or exit the program using predefined hotkeys.
+
++ Keyboard Listener: Runs in a separate thread to allow the user to pause, reload the configuration, or exit the program using predefined hotkeys.
 
 
 ### Important Note:
