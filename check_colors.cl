@@ -14,7 +14,7 @@ __kernel void check_colors(
 {
     int x = get_global_id(0);
     int y = get_global_id(1);
-    int idx = (y * width + x) * 3;
+    size_t idx = (y * width + x) * 3;
 
     if (x < width && y < height) {
         int r = img[idx];
