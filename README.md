@@ -9,11 +9,32 @@
 </div>
 
 ## About
-The "2-condition-triggerbot" project, powered by Kmbox, is an application designed to explore and study hardware cheating methods within the game V. It utilizes computer vision techniques to detect and respond to specific in-game visual cues, enabling research into gaming automation and enhancement techniques.
-<div align="center">
+The "2-condition-triggerbot" project is an educational tool designed to demonstrate the principles of screen capture and image processing in a gaming context. This bot is specifically tailored for the popular FPS game, Valorant. It automates the process of detecting targets and shooting by using color recognition techniques.
  <img src="https://github.com/OzymoGit/2-condition-triggerbot/assets/33122491/c9e8ced2-3ab3-4c19-bfed-6f864f5aa7a7" />
  </div>
  
+### Key Features:
+Configurable Settings: Easily customize the bot’s behavior through the config.json file, including network settings, color tolerance, and delay parameters.
+Real-time Screen Capture: Utilizes mss for efficient screen capture of a small zone around the crosshair to minimize performance impact.
+Color Detection: Detects the presence of specific target and scope colors within the capture zone to determine when to shoot.
+Adjustable Trigger Delay: Fine-tune the bot’s shooting speed with adjustable delay settings to match different game requirements.
+Keyboard Controls: Control the bot with simple hotkeys:
+Press F2 to exit the program.
+Press F3 to pause/continue the bot.
+Press F4 to reload the configuration.
+
+### How It Works:
+
++ Initialization: The bot initializes by loading the configuration, setting up network communication with kmNet, and defining the screen capture zone.
+Screen Capture and Processing: Continuously captures a small portion of the screen around the crosshair, checking for specific colors that indicate a target or scoped-in state.
++ Trigger Mechanism: When both conditions (target detected and scoped-in) are met, the bot simulates a mouse click to shoot, with a customizable delay to mimic human reaction times.
+Keyboard Listener: Runs in a separate thread to allow the user to pause, reload the configuration, or exit the program using predefined hotkeys.
+
+
+### Important Note:
+
+This tool is intended for educational purposes only to showcase how screen capture and color detection can be implemented in a programming project. Using such tools in online games like Valorant is against the terms of service and can result in penalties, including permanent bans. Use this bot at your own risk, and always consider the ethical implications and potential consequences of using cheats in online games.
+
 ## Getting Started
 
 ### Prerequisites
