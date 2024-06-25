@@ -20,7 +20,6 @@ class TriggerBot:
         self.load_config()
         self.init_kmnet()
         self.init_grab_zone()
-        self.init_opencl()
 
     def load_config(self):
         try:
@@ -61,16 +60,18 @@ class TriggerBot:
             "height": 2 * self.ZONE,
         }
 
-    def init_opencl(self):
-        self.ctx = cl.create_some_context()
-        self.queue = cl.CommandQueue(self.ctx)
-        with open('check_colors.cl', 'r') as f:
-            self.program = cl.Program(self.ctx, f.read()).build()
-        self.mf = cl.mem_flags
-        self.img_buf = None
-        self.results_buf = None
-
     def search_and_scope(self, exit_prog, is_scoped, target_detected, paused):
+        import pyopencl as cl  # Import inside the function to avoid pickling issues
+        
+        # Initialize OpenCL context here
+        ctx = cl.create_some_context()
+        queue = cl.CommandQueue(ctx)
+        with open('check_colors.cl', 'r') as f:
+            program = cl.Program(ctx, f.read()).build()
+        mf = cl.mem_flags
+        img_buf = None
+        results_buf = None
+        
         camera = dxcam.create(region=(self.GRAB_ZONE['left'], self.GRAB_ZONE['top'], self.GRAB_ZONE['width'], self.GRAB_ZONE['height']))
         while not exit_prog.value:
             if paused.value:
@@ -87,22 +88,22 @@ class TriggerBot:
                 scope_color = (self.scope_R, self.scope_G, self.scope_B)
                 scope_tol = self.scope_tol
 
-            if self.img_buf is None or self.results_buf is None:
-                self.img_buf = cl.Buffer(self.ctx, self.mf.READ_ONLY | self.mf.COPY_HOST_PTR, hostbuf=img)
-                self.results_buf = cl.Buffer(self.ctx, self.mf.WRITE_ONLY, img.shape[0] * img.shape[1])
+            if img_buf is None or results_buf is None:
+                img_buf = cl.Buffer(ctx, mf.READ_ONLY | mf.COPY_HOST_PTR, hostbuf=img)
+                results_buf = cl.Buffer(ctx, mf.WRITE_ONLY, img.shape[0] * img.shape[1])
             else:
-                cl.enqueue_copy(self.queue, self.img_buf, img)
+                cl.enqueue_copy(queue, img_buf, img)
 
-            self.program.check_colors(
-                self.queue, img.shape[:2], None,
-                self.img_buf, np.int32(img.shape[1]), np.int32(img.shape[0]),
+            program.check_colors(
+                queue, img.shape[:2], None,
+                img_buf, np.int32(img.shape[1]), np.int32(img.shape[0]),
                 np.int32(self.R), np.int32(self.G), np.int32(self.B), np.int32(self.color_tol),
                 np.int32(scope_color[0]), np.int32(scope_color[1]), np.int32(scope_color[2]), np.int32(scope_tol),
-                self.results_buf
+                results_buf
             )
 
             results = np.empty(img.shape[:2], dtype=np.uint8)
-            cl.enqueue_copy(self.queue, results, self.results_buf).wait()
+            cl.enqueue_copy(queue, results, results_buf).wait()
 
             target_detected.value = np.any(results & 0b10)
             is_scoped.value = np.any(results & 0b01)
