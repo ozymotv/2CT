@@ -42,6 +42,7 @@ class TriggerBot:
     def init_kmnet(self):
         kmNet.init(self.ip, self.port, self.uid)
         kmNet.monitor(10000)
+
     def init_grab_zone(self):
         user32 = WinDLL("user32", use_last_error=True)
         shcore = WinDLL("shcore", use_last_error=True)
@@ -59,30 +60,34 @@ class TriggerBot:
 
     def search_and_scope(self):
         sct = mss_module()
+        grab_zone = self.GRAB_ZONE
+        color_tol = self.color_tol
+        R, G, B = self.R, self.G, self.B
+
         while not self.exit_prog:
             if self.paused:
                 time.sleep(0.01)
                 continue
 
-            img = np.array(sct.grab(self.GRAB_ZONE))
-            
+            img = np.array(sct.grab(grab_zone))
+
             if kmNet.isdown_side2() == 1:
-                scope_color = (self.scope_R_alt, self.scope_G_alt, self.scope_B_alt)
+                scope_R, scope_G, scope_B = self.scope_R_alt, self.scope_G_alt, self.scope_B_alt
                 scope_tol = self.scope_tol_alt
             else:
-                scope_color = (self.scope_R, self.scope_G, self.scope_B)
+                scope_R, scope_G, scope_B = self.scope_R, self.scope_G, self.scope_B
                 scope_tol = self.scope_tol
 
             target_mask = (
-                (img[:, :, 0] > self.R - self.color_tol) & (img[:, :, 0] < self.R + self.color_tol) &
-                (img[:, :, 1] > self.G - self.color_tol) & (img[:, :, 1] < self.G + self.color_tol) &
-                (img[:, :, 2] > self.B - self.color_tol) & (img[:, :, 2] < self.B + self.color_tol)
+                (img[:, :, 2] >= R - color_tol) & (img[:, :, 2] <= R + color_tol) &  # Red channel
+                (img[:, :, 1] >= G - color_tol) & (img[:, :, 1] <= G + color_tol) &  # Green channel
+                (img[:, :, 0] >= B - color_tol) & (img[:, :, 0] <= B + color_tol)    # Blue channel
             )
 
             scope_mask = (
-                (img[:, :, 0] > scope_color[0] - scope_tol) & (img[:, :, 0] < scope_color[0] + scope_tol) &
-                (img[:, :, 1] > scope_color[1] - scope_tol) & (img[:, :, 1] < scope_color[1] + scope_tol) &
-                (img[:, :, 2] > scope_color[2] - scope_tol) & (img[:, :, 2] < scope_color[2] + scope_tol)
+                (img[:, :, 2] >= scope_R - scope_tol) & (img[:, :, 2] <= scope_R + scope_tol) &  # Red channel
+                (img[:, :, 1] >= scope_G - scope_tol) & (img[:, :, 1] <= scope_G + scope_tol) &  # Green channel
+                (img[:, :, 0] >= scope_B - scope_tol) & (img[:, :, 0] <= scope_B + scope_tol)    # Blue channel
             )
 
             self.target_detected = np.any(target_mask)
@@ -95,10 +100,8 @@ class TriggerBot:
                 delay_percentage = self.trigger_delay / 100.0
                 actual_delay = self.base_delay + self.base_delay * delay_percentage
                 time.sleep(actual_delay)
-                #kmNet.enc_keydown(14)
                 kmNet.enc_left(1)
                 time.sleep(np.random.uniform(0.080, 0.12))
-                #kmNet.enc_keyup(14)
                 kmNet.enc_left(0)
                 time.sleep(np.random.uniform(0.05, 0.09))
             else:
@@ -130,7 +133,7 @@ class TriggerBot:
         sys.exit()
 
 if __name__ == "__main__":
-    print("            2-condition-triggerbot created by Ozymo. Version: 1.4")
+    print("            2-condition-triggerbot created by Ozymo. Version: 1.5")
     print("-" * 50)
     print("Press F2 to exit the program")
     print("Press F3 to pause/continue the program")
