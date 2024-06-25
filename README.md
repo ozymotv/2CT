@@ -30,7 +30,7 @@ The "2-condition-triggerbot" project is an educational tool designed to demonstr
 
 ### How It Works:
 
-+ Initialization: The bot initializes by loading the configuration, setting up network communication with kmNet, and defining the screen capture zone.
++ Initialization: The bot initializes by loading the configuration, setting up network communication with kmBox, and defining the screen capture zone.
 
 + Screen Capture and Processing: Continuously captures a small portion of the screen around the crosshair, checking for specific colors that indicate a target or scoped-in state.
 
