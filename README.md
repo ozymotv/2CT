@@ -20,7 +20,7 @@ The "2-condition-triggerbot" project, powered by Kmbox, is an application design
 * KmBox library (available as KmNet.pyd in the source)
 * Python 3.11
 * Kmbox Net version
-
+* 2 PCs setup (optional)
 ### Installation
 
 Clone the repository from GitHub:
