@@ -14,6 +14,7 @@ The "2-condition-triggerbot" project is an educational tool designed to demonstr
  </div>
  
 ### Key Features:
+
 Configurable Settings: Easily customize the bot’s behavior through the config.json file, including network settings, color tolerance, and delay parameters.
 Real-time Screen Capture: Utilizes mss for efficient screen capture of a small zone around the crosshair to minimize performance impact.
 Color Detection: Detects the presence of specific target and scope colors within the capture zone to determine when to shoot.
