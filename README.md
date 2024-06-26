@@ -66,7 +66,7 @@ pip install -r requirements.txt
 1. Navigate to the project directory:
 
 ```
-cd 2-condition-triggerbot
+cd 2CT
 ```
 2. Edit the config.json file:
 ```
