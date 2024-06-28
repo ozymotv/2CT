@@ -69,7 +69,7 @@ pip install -r requirements.txt
 cd 2CT
 ```
 
-2. Set up kmbox
+2. Set up kmboxNet
 
 ```
 http://www.kmbox.top/wiki_doc/kmboxNet/site/#_1
@@ -109,7 +109,9 @@ Turn on "Movement error", "Firing error", multiplier to 3 times
 ```
 python run.py
 ```
-5. Keyboard Shortcuts:
+
+6. Keyboard Shortcuts:
+   
 + F2: Exit
 + F3: Pause/unpause
 + F4: Reload config
