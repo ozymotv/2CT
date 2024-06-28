@@ -68,7 +68,15 @@ pip install -r requirements.txt
 ```
 cd 2CT
 ```
-2. Edit the config.json file:
+
+2. Set up kmbox
+
+```
+http://www.kmbox.top/wiki_doc/kmboxNet/site/#_1
+```
+3. Edit the config.json file:
+
+
 ```
 {
   "ip": "192.168.2.188",  // Replace with Kmbox IP
@@ -84,7 +92,8 @@ cd 2CT
   "scope_color_tolerance_alt": 40   // Color tolerance for secondary crosshair
 }
 ```
-3. Adjust crosshair colors:
+4. Adjust crosshair colors:
+
 + Primary crosshair: Cyan
 + Aimdownsight and Sniper: Green
 
@@ -96,7 +105,7 @@ cd 2CT
 
 Turn on "Movement error", "Firing error", multiplier to 3 times
 
-4.Run the program:
+5.Run the program:
 ```
 python run.py
 ```
