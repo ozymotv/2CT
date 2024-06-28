@@ -48,7 +48,11 @@ This tool is intended for educational purposes only to showcase how screen captu
 ### Prerequisites
 * KmBox library (available as KmNet.pyd in the source)
 * Python 3.11
-* Kmbox Net version
+* Kmbox Net version. Set up kmboxNet
+
+```
+http://www.kmbox.top/wiki_doc/kmboxNet/site/#_1
+```
 * 2 PCs setup (optional)
 ### Installation
 
@@ -69,12 +73,7 @@ pip install -r requirements.txt
 cd 2CT
 ```
 
-2. Set up kmboxNet
-
-```
-http://www.kmbox.top/wiki_doc/kmboxNet/site/#_1
-```
-3. Edit the config.json file:
+2. Edit the config.json file:
 
 
 ```
@@ -92,7 +91,7 @@ http://www.kmbox.top/wiki_doc/kmboxNet/site/#_1
   "scope_color_tolerance_alt": 40   // Color tolerance for secondary crosshair
 }
 ```
-4. Adjust crosshair colors:
+3. Adjust crosshair colors:
 
 + Primary crosshair: Cyan
 + Aimdownsight and Sniper: Green
@@ -105,12 +104,12 @@ http://www.kmbox.top/wiki_doc/kmboxNet/site/#_1
 
 Turn on "Movement error", "Firing error", multiplier to 3 times
 
-5.Run the program:
+4.Run the program:
 ```
 python run.py
 ```
 
-6. Keyboard Shortcuts:
+5. Keyboard Shortcuts:
    
 + F2: Exit
 + F3: Pause/unpause
