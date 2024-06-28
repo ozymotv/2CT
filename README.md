@@ -53,7 +53,9 @@ This tool is intended for educational purposes only to showcase how screen captu
 ```
 http://www.kmbox.top/wiki_doc/kmboxNet/site/#_1
 ```
-* 2 PCs setup (optional)
+* 2 PCs setup (optional) 
+  - You can use Capture card or Moonlight streaming
+    
 ### Installation
 
 Clone the repository from GitHub:
