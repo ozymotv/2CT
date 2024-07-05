@@ -123,9 +123,9 @@ Xmousebutton2 for alternate trigger mode
 ![Screenshot 2024-06-24 222638](https://github.com/OzymoGit/2-condition-triggerbot/assets/33122491/c1873efc-af2f-4204-8d46-3a43210763ce)
 
 
-## Help
+## Contribution
 
-Create an issue
+Feel free to submit any improvement, I will credit you.
 
 
 ## Authors
