@@ -138,7 +138,7 @@ if __name__ == "__main__":
     print("Press F2 to exit the program")
     print("Press F3 to pause/continue the program")
     print("Press F4 to reload config")
-   # print("For any questions, join my discord: https://discord.gg/C3MY4kuAcD")
+    print("For any questions, https://github.com/ozymotv/2CT")
     print("-" * 50)
 
     bot = TriggerBot()
