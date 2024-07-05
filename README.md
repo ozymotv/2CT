@@ -125,7 +125,7 @@ Xmousebutton2 for alternate trigger mode
 
 ## Help
 
-Need assistance? Join the Discord server <a href="https://discord.gg/C3MY4kuAcD" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/discord.svg" alt="C3MY4kuAcD" height="30" width="40" /></a>
+Create an issue
 
 
 ## Authors
