@@ -100,9 +100,9 @@ class TriggerBot:
                 delay_percentage = self.trigger_delay / 100.0
                 actual_delay = self.base_delay + self.base_delay * delay_percentage
                 time.sleep(actual_delay)
-                kmNet.enc_left(1)
+                kmNet.left(1)
                 time.sleep(np.random.uniform(0.080, 0.12))
-                kmNet.enc_left(0)
+                kmNet.left(0)
                 time.sleep(np.random.uniform(0.05, 0.09))
             else:
                 time.sleep(0.001)
