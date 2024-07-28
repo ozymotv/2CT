@@ -81,17 +81,17 @@ cd 2CT
 
 ```
 {
-  "ip": "192.168.2.188",  // Replace with Kmbox IP
-  "port": "16896",        // Replace with Kmbox port
-  "uid": "46405C53",      // Replace with Kmbox UID
-  "trigger_delay": 0,     // Delay between shots (not implemented yet)
-  "base_delay": 0,        // Base delay from pixel detection to left mouse click, set to 0 for faster response
-  "color_tolerance": 40,  // Main color tolerance, increase if the bot does not detect color
-  "target_color": [250, 100, 250],  // Enemy outline color, default is Purple
-  "scope_color": [0, 255, 0],       // Primary crosshair color, default is Green
-  "scope_color_tolerance": 40,      // Color tolerance for primary crosshair
-  "scope_color_alt": [0, 255, 255], // Secondary crosshair color, used when holding second mouse button instead of primary
-  "scope_color_tolerance_alt": 40   // Color tolerance for secondary crosshair
+  "ip": "192.168.2.188", 
+  "port": "16896",  
+  "uid": "46405C53",  
+  "trigger_delay": 0,  
+  "base_delay": 0,  
+  "color_tolerance": 40, 
+  "target_color": [250, 100, 250], 
+  "scope_color": [0, 255, 0],
+  "scope_color_tolerance": 40, 
+  "scope_color_alt": [0, 255, 255], 
+  "scope_color_tolerance_alt": 40 
 }
 ```
 3. Adjust crosshair colors:
