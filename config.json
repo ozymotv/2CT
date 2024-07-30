@@ -4,10 +4,11 @@
   "uid": "46405C53",
   "trigger_delay": 0,
   "base_delay": 0,
-  "color_tolerance": 70,
+  "color_tolerance": 50,
   "target_color": [250, 100, 250],
   "scope_color": [0, 255, 0],
-  "scope_color_tolerance": 40,
-  "scope_color_alt": [255, 255, 0],
+  "scope_color_tolerance": 50,
+  "scope_color_alt": [0, 255, 255],
   "scope_color_tolerance_alt": 40
+  "mouse_button": "XButton1"
 }
