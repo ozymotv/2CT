@@ -9,6 +9,6 @@
   "scope_color": [0, 255, 0],
   "scope_color_tolerance": 50,
   "scope_color_alt": [0, 255, 255],
-  "scope_color_tolerance_alt": 40
+  "scope_color_tolerance_alt": 40,
   "mouse_button": "XButton1"
 }
