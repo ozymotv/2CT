@@ -7,6 +7,10 @@ import kmNet
 from ctypes import WinDLL
 import sys
 import keyboard
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class TriggerBot:
     def __init__(self):
@@ -36,12 +40,17 @@ class TriggerBot:
             self.scope_R_alt, self.scope_G_alt, self.scope_B_alt = data["scope_color_alt"]
             self.scope_tol_alt = data["scope_color_tolerance_alt"]
         except KeyError as e:
-            print(f"Missing key in config.json: {e}")
+            logging.error(f"Missing key in config.json: {e}")
             self.exit()
 
     def init_kmnet(self):
-        kmNet.init(self.ip, self.port, self.uid)
-        kmNet.monitor(10000)
+        try:
+            kmNet.init(self.ip, self.port, self.uid)
+            kmNet.monitor(10000)
+            logging.info("kmNet initialized successfully")
+        except Exception as e:
+            logging.error(f"Error initializing kmNet: {e}")
+            self.exit()
 
     def init_grab_zone(self):
         user32 = WinDLL("user32", use_last_error=True)
@@ -115,31 +124,29 @@ class TriggerBot:
     def keyboard_listener(self):
         while not self.exit_prog:
             if keyboard.is_pressed('F2'):
-                print("Exiting program...")
+                logging.info("Exiting program...")
                 self.exit_prog = True
                 self.exit()
             elif keyboard.is_pressed('F3'):
                 self.paused = not self.paused
                 state = "paused" if self.paused else "continued"
-                print(f"Program {state}...")
+                logging.info(f"Program {state}...")
                 time.sleep(0.1)
             elif keyboard.is_pressed('F4'):
-                print("Reload config: Done")
+                logging.info("Reload config: Done")
                 self.load_config()
                 time.sleep(0.1)
             time.sleep(0.1)
 
     def exit(self):
+        logging.info("Exiting...")
         sys.exit()
 
 if __name__ == "__main__":
-    print("            2-condition-triggerbot created by Ozymo. Version: 1.5")
-    print("-" * 50)
-    print("Press F2 to exit the program")
-    print("Press F3 to pause/continue the program")
-    print("Press F4 to reload config")
-    print("For any questions, https://github.com/ozymotv/2CT")
-    print("-" * 50)
+    logging.info("2-condition-triggerbot created by Ozymo. Version: 1.5")
+    logging.info("Press F2 to exit the program")
+    logging.info("Press F3 to pause/continue the program")
+    logging.info("Press F4 to reload config")
 
     bot = TriggerBot()
     bot.start_threads()
