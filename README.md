@@ -104,8 +104,15 @@ For the best compatibility and to avoid dependency conflicts, follow these steps
    pip install numpy mss keyboard
    ```
 
-6. **Copy your project files and kmNet.pyd to the directory**
-
+6. **Edit the script and run**
+   ```
+   py run.py
+   ```
+7. **Remember to open env before use in the future**
+    ```
+   venv-3.11\Scripts\activate
+   py run.py
+   ```
 ### Alternative: Quick Install
 If you prefer not to use a virtual environment, you can simply install the required packages:
 
