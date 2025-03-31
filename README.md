@@ -8,6 +8,8 @@ A hardware aimbot for Valorant using Kmbox
 
 </div>
 
+# Check out Kmbox net AI aimbot  [Here](https://github.com/ozymotv/2CA)
+
 ## About
 The "2-condition-triggerbot" project is an educational tool designed to demonstrate the principles of screen capture and image processing in a gaming context. This bot is specifically tailored for the popular FPS game, Valorant. It automates the process of detecting targets and shooting by using color recognition techniques.
 
