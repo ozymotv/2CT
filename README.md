@@ -117,7 +117,7 @@ For the best compatibility and to avoid dependency conflicts, follow these steps
 If you prefer not to use a virtual environment, you can simply install the required packages:
 
 ```
-pip install -r requirements.txt
+pip install numpy mss keyboard
 ```
 
 ### Running the Program
@@ -160,7 +160,7 @@ Turn on "Movement error", "Firing error", multiplier to 3 times
 
 4.Run the program:
 ```
-# Make sure your virtual environment is activated if you're using one
+# if theres error, go back to env method
 python run.py
 ```
 
