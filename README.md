@@ -69,7 +69,8 @@ git clone https://github.com/ozymotv/2CT.git
 Install required Python packages:
 
 ```
-pip install -r requirements.txt
+pip install numpy mss keyboard
+
 ```
 ### Running the Program
 1. Navigate to the project directory:
