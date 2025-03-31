@@ -20,13 +20,13 @@ The "2-condition-triggerbot" project is an educational tool designed to demonstr
  
 ### Key Features:
 
-+ Configurable Settings: Easily customize the bot’s behavior through the config.json file, including network settings, color tolerance, and delay parameters.
++ Configurable Settings: Easily customize the bot's behavior through the config.json file, including network settings, color tolerance, and delay parameters.
   
 + Real-time Screen Capture: Utilizes mss for efficient screen capture of a small zone around the crosshair to minimize performance impact.
 
 + Color Detection: Detects the presence of specific target and scope colors within the capture zone to determine when to shoot.
 
-+ Adjustable Trigger Delay: Fine-tune the bot’s shooting speed with adjustable delay settings to match different game requirements.
++ Adjustable Trigger Delay: Fine-tune the bot's shooting speed with adjustable delay settings to match different game requirements.
 
 + Keyboard Controls: Control the bot with simple hotkeys:
 
@@ -66,12 +66,53 @@ Clone the repository from GitHub:
 ```
 git clone https://github.com/ozymotv/2CT.git
 ```
-Install required Python packages:
+
+### Setting Up Python Environment (Recommended)
+
+For the best compatibility and to avoid dependency conflicts, follow these steps:
+
+1. **Install Python 3.11**
+   ```
+   # Download Python 3.11 from the official website:
+   # https://www.python.org/downloads/release/python-3118/
+   # During installation, make sure to check "Add Python 3.11 to PATH"
+   ```
+
+2. **Create a Dedicated Project Directory**
+   ```
+   mkdir triggerbot
+   cd triggerbot
+   ```
+
+3. **Create a Virtual Environment**
+   ```
+   python -m venv venv-3.11
+   ```
+
+4. **Activate the Virtual Environment**
+   ```
+   # Windows
+   venv-3.11\Scripts\activate
+   
+   # macOS/Linux
+   source venv-3.11/bin/activate
+   ```
+   You should now see `(venv-3.11)` at the beginning of your command prompt.
+
+5. **Install Required Packages in the Virtual Environment**
+   ```
+   pip install numpy mss keyboard
+   ```
+
+6. **Copy your project files and kmNet.pyd to the directory**
+
+### Alternative: Quick Install
+If you prefer not to use a virtual environment, you can simply install the required packages:
 
 ```
-pip install numpy mss keyboard
-
+pip install -r requirements.txt
 ```
+
 ### Running the Program
 1. Navigate to the project directory:
 
@@ -112,6 +153,7 @@ Turn on "Movement error", "Firing error", multiplier to 3 times
 
 4.Run the program:
 ```
+# Make sure your virtual environment is activated if you're using one
 python run.py
 ```
 
@@ -125,6 +167,12 @@ Xmousebutton2 for alternate trigger mode
 
 ![Screenshot 2024-06-24 222638](https://github.com/OzymoGit/2-condition-triggerbot/assets/33122491/c1873efc-af2f-4204-8d46-3a43210763ce)
 
+### Troubleshooting
+
+- **"No module named 'kmNet'"**: Ensure kmNet.pyd is in the same directory as your script
+- **Screen capture issues**: Run as administrator on Windows
+- **KmBox connection errors**: Verify IP address and port in config.json
+- **Activation script errors**: Try `py -3.11 -m venv venv-3.11` if the standard command doesn't work
 
 ## Contribution
 
@@ -154,5 +202,3 @@ Feel free to submit any improvement, I will credit you.
 ## License
 
 This project is licensed under the GPL 3.0 License - see the LICENSE file for details
-
-
