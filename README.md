@@ -124,7 +124,8 @@ Xmousebutton2 for alternate trigger mode
 
 ### Troubleshooting
 
-- **"No module named 'kmNet'"**: Ensure kmNet.pyd is in the same directory as your script
+- **"No module named 'kmNet'"**: Ensure kmNet_xxx.pyd is in the same directory as your script
+- **"DLL Failed to load"**: Install Desktop development with c++
 - **Screen capture issues**: Run as administrator on Windows
 - **KmBox connection errors**: Verify IP address and port in config.json
 
