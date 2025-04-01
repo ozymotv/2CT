@@ -112,13 +112,7 @@ Step 4: run the run.py (or open cmd and type py run.py)
 
 Turn on "Movement error", "Firing error", multiplier to 3 times
 
-4.Run the program:
-```
-# if theres error, go back to env method
-python run.py
-```
-
-5. Keyboard Shortcuts:
+4. Keyboard Shortcuts:
    
 + F2: Exit
 + F3: Pause/unpause
