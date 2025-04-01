@@ -104,7 +104,7 @@ For the best compatibility and to avoid dependency conflicts, follow these steps
    pip install numpy mss keyboard
    ```
 
-6. **Edit the script and run**
+6. **Edit config.json and run the script**
    ```
    py run.py
    ```
