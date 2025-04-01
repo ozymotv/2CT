@@ -62,12 +62,14 @@ The firmware for kmbox must be at least from May 18th 2024 or above!!!
 ### Installation
 
 Clone the repository from GitHub:
+ Download and extract the source into your dicrectory
+
+Or if you have git install, use this command
 
 ```
 git clone https://github.com/ozymotv/2CT.git
 ```
-Or you can download and extract the source
-
+Or you can
 ### Quick Install
 Step 1: Open CMD and paste this in
 
