@@ -127,7 +127,7 @@ Xmousebutton2 for alternate trigger mode
 - **"No module named 'kmNet'"**: Ensure kmNet.pyd is in the same directory as your script
 - **Screen capture issues**: Run as administrator on Windows
 - **KmBox connection errors**: Verify IP address and port in config.json
-- **Activation script errors**: Try `py -3.11 -m venv venv-3.11` if the standard command doesn't work
+
 
 ## Contribution
 
