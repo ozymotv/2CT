@@ -69,7 +69,7 @@ Or if you have git installed, use this command
 ```
 git clone https://github.com/ozymotv/2CT.git
 ```
-Or you can
+
 ### Quick Install
 Step 1: Open CMD and paste this in
 
