@@ -66,6 +66,7 @@ Clone the repository from GitHub:
 ```
 git clone https://github.com/ozymotv/2CT.git
 ```
+Or you can download and extract the source
 
 ### Quick Install
 Step 1: Open CMD and paste this in
