@@ -50,7 +50,7 @@ This tool is intended for educational purposes only to showcase how screen captu
 ### Prerequisites
 * KmBox library (available as KmNet.pyd in the source)
 * Python 3.11
-* Kmbox Net version. Set up kmboxNet
+* Kmbox Net hardware
 
 ```
 http://www.kmbox.top/wiki_doc/kmboxNet/site/#_1
@@ -67,68 +67,16 @@ Clone the repository from GitHub:
 git clone https://github.com/ozymotv/2CT.git
 ```
 
-### Setting Up Python Environment (Recommended)
-
-For the best compatibility and to avoid dependency conflicts, follow these steps:
-
-1. **Install Python 3.11**
-   ```
-   # Download Python 3.11 from the official website:
-   # https://www.python.org/downloads/release/python-3118/
-   # During installation, make sure to check "Add Python 3.11 to PATH"
-   ```
-
-2. **Create a Dedicated Project Directory**
-   ```
-   mkdir triggerbot
-   cd triggerbot
-   ```
-
-3. **Create a Virtual Environment**
-   ```
-   python -m venv venv-3.11
-   ```
-
-4. **Activate the Virtual Environment**
-   ```
-   # Windows
-   venv-3.11\Scripts\activate
-   
-   # macOS/Linux
-   source venv-3.11/bin/activate
-   ```
-   You should now see `(venv-3.11)` at the beginning of your command prompt.
-
-5. **Install Required Packages in the Virtual Environment**
-   ```
-   pip install numpy mss keyboard
-   ```
-
-6. **Edit config.json and run the script**
-   ```
-   py run.py
-   ```
-7. **Remember to open env before use in the future**
-    ```
-   venv-3.11\Scripts\activate
-   py run.py
-   ```
-### Alternative: Quick Install
-If you prefer not to use a virtual environment, you can simply install the required packages:
+### Quick Install
+Step 1: Open CMD and paste this in
 
 ```
 pip install numpy mss keyboard
 ```
 
-### Running the Program
-1. Navigate to the project directory:
+Step 2: Install Visual Studio 2022 Community Edition + Desktop C++ support [Visual studio](https://visualstudio.microsoft.com/vs/community/)
 
-```
-cd 2CT
-```
-
-2. Edit the config.json file:
-
+Step 3: Edit the config.json file:
 
 ```
 {
@@ -145,6 +93,9 @@ cd 2CT
   "scope_color_tolerance_alt": 40 
 }
 ```
+Step 4: run the run.py (or open cmd and type py run.py)
+
+
 3. Adjust crosshair colors:
 
 + Primary crosshair: Cyan
