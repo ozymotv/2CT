@@ -77,7 +77,7 @@ Step 1: Open CMD and paste this in
 pip install numpy mss keyboard
 ```
 
-Step 2: Download Visual Studio 2022 Community Edition then install -> Desktop C++ support [Download Visual studio](https://visualstudio.microsoft.com/vs/community/)
+Step 2: Download Visual Studio 2022 Community Edition then install -> Desktop development with c++ [Download Visual studio](https://visualstudio.microsoft.com/vs/community/)
 
 Step 3: Edit the config.json file:
 
