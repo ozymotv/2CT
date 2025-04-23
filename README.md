@@ -55,7 +55,7 @@ This tool is intended for educational purposes only to showcase how screen captu
 ```
 http://www.kmbox.top/wiki_doc/kmboxNet/site/#_1
 ```
-The firmware for kmbox must be at least from May 18th 2024 or above!!!
+Setup your KMBOX net if you haven't done that already [Watch video](https://www.youtube.com/watch?v=LCrx8FC49d4) (Stop at 01:30 is enough. Update the firmware is optional)
 * 2 PCs setup (optional) 
   - You can use Capture card or Moonlight streaming
     
