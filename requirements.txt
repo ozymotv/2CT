@@ -1,3 +1,11 @@
-numpy
-mss
-keyboard
+numpy>=1.20.0
+opencv-python>=4.5.0
+mss>=6.1.0
+pynput>=1.7.0
+keyboard>=0.13.5
+numba>=0.53.0
+psutil>=5.8.0  
+ctypes         
+webbrowser     
+tkinter      
+winsound     
