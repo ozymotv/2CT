@@ -97,9 +97,9 @@ Manual Configuration (config.json)
    "port": 16896,                       //port
    "uuid": "46405c53",                  // uuid
   
-  "target_color": [252, 60, 250],       // Target RGB color to detect [B,G,R]
+  "target_color": [252, 60, 250],       // Target RGB color to detect 
   "target_color_tolerance": 60,         // Color detection tolerance
-  "crosshair_color": [65, 255, 0],      // Crosshair color [B,G,R]  
+  "crosshair_color": [0, 255, 0],       // Crosshair color currently green
   "crosshair_color_tolerance": 25,      // Crosshair detection tolerance
   "trigger_zone_size": 50,              // Detection zone size in pixels
   "center_zone_size": 3,                // Center detection zone size
