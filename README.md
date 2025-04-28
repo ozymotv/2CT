@@ -85,22 +85,26 @@ Manual Configuration (config.json)
                                           //#Purple: 250, 100, 250  #Yellow: 210, 220, 80.
                                           //Other games you must find it your self.
                                           //take a screenshot and upload to https://imagecolorpicker.com/
-
   "target_color_tolerance": 60,         // Color detection tolerance
+
+  "require_crosshair": 0,               // 1 to require crosshair detection, 0 to ignore
   "crosshair_color": [0, 255, 0],       // Crosshair color currently green
   "crosshair_color_tolerance": 25,      // Crosshair detection tolerance
+
   "trigger_zone_size": 50,              // Detection zone size in pixels
   "center_zone_size": 3,                // Center detection zone size
-  "max_ray_distance": 50,               // Maximum ray tracing distance
-  "rays_per_direction": 5,              // Number of rays per direction
-  "ray_angle_spread": 30,               // Angle spread of rays in degrees
-  "method": "key",                      // Trigger method: "key" or "kmnet"
-  "trigger_key": "Space",               // Key to activate when target detected
-  "require_crosshair": 0,               // 1 to require crosshair detection, 0 to ignore
+
+  "max_ray_distance": 50,               // Maximum ray tracing distance (increase this can lead to false positive)
+  "rays_per_direction": 5,              // Number of rays per direction. 3-5 is recommend
+  "ray_angle_spread": 30,               // Angle spread of rays in degrees 
+
+  "trigger_key": "k",                   // Your alternate/secondary fire bind ingame. 
+
   "press_release_min_ms": 80,           // Minimum key press duration in ms
   "press_release_max_ms": 100,          // Maximum key press duration in ms
   "delay_after_shoot_min_ms": 200,      // Minimum delay after trigger in ms
   "delay_after_shoot_max_ms": 200,      // Maximum delay after trigger in ms
+
   "mode": "always",                     // Mode: "always", "toggle", or "hold"
   "hotkey": "T",                        // Hotkey for toggle/hold modes
   "num_threads": 4                      // number of threads is used for image processing
