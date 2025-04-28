@@ -56,7 +56,7 @@ git clone https://github.com/ozymotv/2CT.git
 ```
 
 ### Quick Install
-Step 1: Open CMD in the project location and paste this in to install dependencies
+Step 1: Open CMD in the project location and run this code to install dependencies
 
 ```
 pip install -r requirements.txt
