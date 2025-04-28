@@ -113,7 +113,7 @@ Manual Configuration (config.json)
 
 ### Troubleshooting
 
-- **"No module named 'kmNet'"**: Ensure kmNet_xxx.pyd is in the same directory as your script
+- **"No module named 'kmNet'"**: Ensure kmNet_xxx.pyd is in the /module folder. same as your script
 - **"DLL Failed to load"**: Install Desktop development with c++
 - **Screen capture issues**: Run as administrator on Windows
 - **Low FPS**: Try reducing the trigger zone size or rays per direction
