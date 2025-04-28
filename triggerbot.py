@@ -21,7 +21,7 @@ from pynput.mouse import Listener as MouseListener, Button as MouseButton
 
 CONFIG_PATH = 'config.json'
 KEY_DOC_URL = 'https://docs.microsoft.com/windows/win32/inputdev/virtual-key-codes'
-SUPPORT_URL = 'https://example.com/support'
+SUPPORT_URL = 'https://github.com/ozymotv/supportme'
 KEY_OPTIONS = [
     *[chr(c) for c in range(ord('A'), ord('Z')+1)],
     *[str(d) for d in range(0, 10)],
@@ -261,7 +261,7 @@ class TriggerBotUI:
 
         # Trigger Key Frame
         self.key_frame = ttk.Frame(main)
-        ttk.Label(self.key_frame, text='Trigger Key:').grid(row=0, column=0, sticky='W', **pad)
+        ttk.Label(self.key_frame, text='Fire key:').grid(row=0, column=0, sticky='W', **pad)
         self.key_var = tk.StringVar(value=self.config.get('trigger_key', 'Space'))
         ttk.Combobox(self.key_frame, values=KEY_OPTIONS, textvariable=self.key_var, width=15).grid(row=0, column=1, sticky='EW', **pad)
         link1 = ttk.Label(self.key_frame, text='Key Codes', foreground='blue', cursor='hand2')
