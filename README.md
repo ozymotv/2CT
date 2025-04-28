@@ -2,7 +2,7 @@
  <img src="https://github.com/OzymoGit/2-condition-triggerbot/assets/33122491/86aed2d0-5393-42c1-b9a4-d0d29974a099" /><br> <h1>2-condition-triggerbot</h1>
  <img src="https://img.shields.io/badge/Live%20Status-UNDETECTED-green" />
 
-A Color triggerbot that support native windows sending key method or with Kmbox NET (optinal)
+A Color triggerbot that support native windows sending key method or with Kmbox NET (optional)
 
 </div>
 
