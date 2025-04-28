@@ -85,7 +85,7 @@ Manual Configuration (config.json)
                                           //#Purple: 250, 100, 250  #Yellow: 210, 220, 80.
                                           //Other games you must find it your self.
                                           //take a screenshot and upload to https://imagecolorpicker.com/
-  "target_color_tolerance": 60,         // Color detection tolerance
+  "target_color_tolerance": 60,         // Target color detection tolerance
 
   "require_crosshair": 0,               // 1 to require crosshair detection, 0 to ignore
   "crosshair_color": [0, 255, 0],       // Crosshair color currently green
