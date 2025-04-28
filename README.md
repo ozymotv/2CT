@@ -6,8 +6,6 @@ A Color triggerbot that support native windows sending key method or with Kmbox 
 
 </div>
 
-# Check out Kmbox net AI aimbot  [Here](https://github.com/ozymotv/2CA)
-
 ## About
 2CT is a highly optimized, color-detection based automatic trigger system for gaming with customizable settings and a user-friendly interface. Work for any game that support **secondary or alternate fire bind**
 
