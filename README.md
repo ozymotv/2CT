@@ -15,26 +15,12 @@ A Color triggerbot that support native windows sending key method or with Kmbox 
  
  </div>
  
-### Key Features:
+### Detection Algorithm
 
-+ Color Detection: Automatically detects target colors in the center of your screen
-  
-+ Customizable Settings: Adjust sensitivity, delay, trigger keys, and more
-  
-+ Visual Debug Mode: Visualize detected targets with the debug viewer
-
-+ Performance Optimized: High FPS with minimal system impact
-
-+ Multiple Trigger Methods: Support for keyboard and mouse inputs
-
-### How It Works:
-
-+ Screen Capture and Processing: The application captures a small region in the center of your screen. From the center of the screen, rays are projected in multiple directions. Three primary directions are analyzed: up, left, and right. When rays intersect with target pixels, that direction is considered "hit"
-
-+ Trigger Mechanism: When both conditions (target detected and scoped-in) are met, the bot simulates a mouse click to shoot, with a customizable delay to mimic human reaction times.
-
-+ Keyboard Listener: Runs in a separate thread to allow the user to pause, reload the configuration, or exit the program using predefined hotkeys.
-
++ Color Detection: Identifies pixels matching the target color
++ Ray Tracing: Shoots rays in multiple directions to find connected areas
++ Decision Logic: Triggers when the right pattern of detection is found
++ Crosshair Verification (optional): Confirms crosshair color is present
 
 ### Important Note:
 
@@ -120,14 +106,6 @@ Manual Configuration (config.json)
   "num_threads": 4                      // number of threads is used for image processing
 }
 ```
-
-
-### Detection Algorithm
-
-+ Color Detection: Identifies pixels matching the target color
-+ Ray Tracing: Shoots rays in multiple directions to find connected areas
-+ Decision Logic: Triggers when the right pattern of detection is found
-+ Crosshair Verification (optional): Confirms crosshair color is present
 
 ### Troubleshooting
 
