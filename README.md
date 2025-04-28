@@ -97,7 +97,7 @@ Manual Configuration (config.json)
    "port": 16896,                       //port
    "uuid": "46405c53",                  // uuid
   
-  "target_color": [252, 60, 250],       // Target RGB color to detect 
+  "target_color": [252, 60, 250],       // Target RGB color to detect. For valorant #Red: 250, 25, 25  #Purple: 250, 100, 250  #Yellow: 210, 220, 80
   "target_color_tolerance": 60,         // Color detection tolerance
   "crosshair_color": [0, 255, 0],       // Crosshair color currently green
   "crosshair_color_tolerance": 25,      // Crosshair detection tolerance
