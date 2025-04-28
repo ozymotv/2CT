@@ -14,7 +14,8 @@ A hardware aimbot for Valorant using Kmbox
 2CT is a highly optimized, color-detection based automatic trigger system for gaming with customizable settings and a user-friendly interface.
 
 <div align="center">
- <img src="https://github.com/OzymoGit/2-condition-triggerbot/assets/33122491/c9e8ced2-3ab3-4c19-bfed-6f864f5aa7a7" />
+ <img src="https://github.com/ozymotv/2CT/blob/main/docs/vi/pics/key.png?raw=true" />
+ <img src="https://github.com/ozymotv/2CT/blob/main/docs/vi/pics/kmnet.png?raw=true" />
  
  </div>
  
@@ -127,9 +128,6 @@ Manual Configuration (config.json)
 + Ray Tracing: Shoots rays in multiple directions to find connected areas
 + Decision Logic: Triggers when the right pattern of detection is found
 + Crosshair Verification (optional): Confirms crosshair color is present
-
-
-![Screenshot 2024-06-24 222638](https://github.com/OzymoGit/2-condition-triggerbot/assets/33122491/c1873efc-af2f-4204-8d46-3a43210763ce)
 
 ### Troubleshooting
 
