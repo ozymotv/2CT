@@ -117,7 +117,7 @@ Manual Configuration (config.json)
   "delay_after_shoot_max_ms": 200,      // Maximum delay after trigger in ms
   "mode": "always",                     // Mode: "always", "toggle", or "hold"
   "hotkey": "T",                        // Hotkey for toggle/hold modes
-  "num_threads": 4 
+  "num_threads": 4                      // number of threads is used for image processing
 }
 ```
 
@@ -160,7 +160,7 @@ Feel free to submit any improvement, I will credit you.
 </p>
 
 
-<h3 align="left">Support:</h3>
+<h3 align="left">Support this project:</h3>
 
 USDT - TRX (TRON TRC-20): TChDBfpKwHPX7CLnqvtQGG7jr9jvaB5KWq
 
