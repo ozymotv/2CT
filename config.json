@@ -1,13 +1,32 @@
 {
-  "ip": "192.168.2.188",
-  "port": "16896",
-  "uid": "46405C53",
-  "trigger_delay": 0,
-  "base_delay": 0,
-  "color_tolerance": 70,
-  "target_color": [250, 100, 250],
-  "scope_color": [0, 255, 0],
-  "scope_color_tolerance": 40,
-  "scope_color_alt": [255, 255, 0],
-  "scope_color_tolerance_alt": 40
+    "method": "kmnet",
+    "trigger_key": "k",
+    "ip": "192.168.2.188",
+    "port": 3896,
+    "uuid": "46423as",
+    "require_crosshair": 0,
+    "press_release_min_ms": 80,
+    "press_release_max_ms": 90,
+    "delay_after_shoot_min_ms": 100,
+    "delay_after_shoot_max_ms": 100,
+    "mode": "hold",
+    "hotkey": "XBUTTON2",
+    "target_color_tolerance": 60,
+    "target_color": [
+        252,
+        60,
+        250
+    ],
+    "crosshair_color": [
+        0,
+        255,
+        0
+    ],
+    "crosshair_color_tolerance": 25,
+    "trigger_zone_size": 50,
+    "center_zone_size": 3,
+    "max_ray_distance": 50,
+    "num_threads": 4,
+    "rays_per_direction": 5,
+    "ray_angle_spread": 30
 }
