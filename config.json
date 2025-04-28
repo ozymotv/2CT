@@ -13,8 +13,8 @@
     "hotkey": "XBUTTON2",
     "target_color_tolerance": 60,
     "target_color": [
-        252,
-        60,
+        250,
+        100,
         250
     ],
     "crosshair_color": [
