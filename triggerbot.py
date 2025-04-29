@@ -1,8 +1,5 @@
-#!/usr/bin/env pythonw
 import os, sys, random, string
-
 import sys
-# Hide console on Windows
 if sys.platform == 'win32':
     import ctypes
     ctypes.windll.kernel32.FreeConsole()
