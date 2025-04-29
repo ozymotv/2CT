@@ -155,4 +155,4 @@ BTC - BTC network: 1MnnTJBfdYEpeLgCFYf4NiMLg1UGRvijsz
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the GPLv3 License - see the LICENSE file for details.
