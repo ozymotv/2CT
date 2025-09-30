@@ -88,10 +88,6 @@ class DetectionEngine:
         self.frame_queue = queue.Queue(maxsize=2)
         self.num_threads = getattr(self, 'num_threads', 4) or 4
 
-    # ----------------------------
-    # Config
-    # ----------------------------
-    
     def _load_config(self):
         """Load config from file (original method)"""
         try:
@@ -172,10 +168,6 @@ class DetectionEngine:
             self.start_capture()
         return True
 
-    # ----------------------------
-    # Image analysis
-    # ----------------------------
-    
     def create_color_mask(self, img, color, tol):
         """Create color mask for target detection"""
         B0, G0, R0 = color
@@ -252,10 +244,6 @@ class DetectionEngine:
             'center': center_hit, 'crosshair': ch_hit, 'fire': fire
         }
 
-    # ----------------------------
-    # Threading
-    # ----------------------------
-    
     def _capture_thread_func(self):
         """Capture thread: grab screen and push to queue"""
         if HAS_DXCAM:
@@ -337,10 +325,6 @@ class DetectionEngine:
         except queue.Empty:
             pass
 
-    # ----------------------------
-    # Getters
-    # ----------------------------
-    
     def get_crosshair_state(self):
         """Get current crosshair detection state"""
         with self._lock:

@@ -6,6 +6,7 @@ import random
 import webbrowser
 import tkinter as tk
 from tkinter import ttk, messagebox
+
 from config_manager import ConfigManager
 from detection_engine import DetectionEngine
 from input_manager import InputManager
@@ -35,14 +36,12 @@ class TriggerBotUI:
         # Initialize managers
         self.config_manager = ConfigManager()
         self.config = self.config_manager.load_config()
-        self.detection_engine = DetectionEngine(self.config)
-        self.input_manager = InputManager(self.ui_callback)
         
         # State variables
         self.running = False
         self.window_id = generate_random_string(6)
         
-        # UI Variables - Basic Settings
+        # 🔧 CRITICAL FIX: Define ALL UI variables FIRST before creating managers
         self.method_var = tk.StringVar(value=self.config.get('method', 'key'))
         self.key_var = tk.StringVar(value=self.config.get('trigger_key', 'Space'))
         self.ip_var = tk.StringVar(value=self.config.get('ip', ''))
@@ -72,10 +71,20 @@ class TriggerBotUI:
         self.ray_angle_spread = tk.IntVar(value=self.config.get('ray_angle_spread', 30))
         self.num_threads = tk.IntVar(value=self.config.get('num_threads', 4))
         
+        # NOW create managers AFTER all variables are defined
+        print("🔧 Creating detection engine...")
+        self.detection_engine = DetectionEngine(self.config)
+        print("🔧 Creating input manager...")
+        self.input_manager = InputManager(self.ui_callback)
+        
         # Setup UI
         self.setup_anti_detection()
         self.build_ui()
         self.input_manager.parse_hotkey(self.hotkey_var.get())
+        
+        # 🔧 DELAY KMNet init until UI is fully loaded
+        if self.method_var.get() == 'kmnet':
+            threading.Thread(target=self.delayed_kmnet_init, daemon=True).start()
         
         # Start background threads
         threading.Thread(target=self.update_fps_display, daemon=True).start()
@@ -85,7 +94,17 @@ class TriggerBotUI:
         
         # Position window
         self.position_window_naturally()
-    
+        print("✅ TriggerBotUI fully initialized")
+        
+    def delayed_kmnet_init(self):
+        """Initialize KMNet after UI is fully loaded"""
+        time.sleep(1.0)  # Wait for UI to be ready
+        try:
+            self.input_manager.init_kmnet_if_needed()
+            print("✅ KMNet initialization completed")
+        except Exception as e:
+            print(f"⚠️ KMNet initialization failed: {e}")
+
     def setup_anti_detection(self):
         """Setup anti-detection features"""
         try:
@@ -94,7 +113,7 @@ class TriggerBotUI:
                 self.root.iconbitmap(random_icon)
         except:
             pass
-    
+
     def build_ui(self):
         """Build the complete UI with tabs for basic and advanced settings"""
         # Create notebook for tabs
@@ -113,15 +132,15 @@ class TriggerBotUI:
         
         # Control Panel (at bottom)
         self.build_control_panel()
-    
+
     def build_basic_tab(self, parent):
         """Build basic settings tab"""
         pad = {'padx': 8, 'pady': 4}
         
         # Trigger Method
         ttk.Label(parent, text='Trigger Method:').grid(row=0, column=0, sticky='W', **pad)
-        ttk.OptionMenu(parent, self.method_var, self.method_var.get(), 'key', 'kmnet', 
-                      command=lambda _: self.update_visibility()).grid(row=0, column=1, sticky='EW', **pad)
+        ttk.OptionMenu(parent, self.method_var, self.method_var.get(), 'key', 'kmnet',
+                       command=lambda _: self.update_visibility()).grid(row=0, column=1, sticky='EW', **pad)
         
         # Trigger Key Frame
         self.key_frame = ttk.Frame(parent)
@@ -158,8 +177,8 @@ class TriggerBotUI:
         
         # Mode selection
         ttk.Label(parent, text='Mode:').grid(row=8, column=0, sticky='W', **pad)
-        ttk.OptionMenu(parent, self.mode_var, self.mode_var.get(), 'always', 'toggle', 'hold', 
-                      command=lambda _: self.update_visibility()).grid(row=8, column=1, sticky='EW', **pad)
+        ttk.OptionMenu(parent, self.mode_var, self.mode_var.get(), 'always', 'toggle', 'hold',
+                       command=lambda _: self.update_visibility()).grid(row=8, column=1, sticky='EW', **pad)
         
         # Hotkey selection
         self.hotkey_frame = ttk.Frame(parent)
@@ -167,20 +186,19 @@ class TriggerBotUI:
         hotkey_cb = ttk.Combobox(self.hotkey_frame, values=KEY_OPTIONS, textvariable=self.hotkey_var, width=15)
         hotkey_cb.grid(row=0, column=1, sticky='EW', **pad)
         hotkey_cb.bind('<<ComboboxSelected>>', lambda e: self.input_manager.parse_hotkey(self.hotkey_var.get()))
-        
         link2 = ttk.Label(self.hotkey_frame, text='Key Codes', foreground='blue', cursor='hand2')
         link2.grid(row=0, column=2, sticky='W', padx=5)
         link2.bind('<Button-1>', lambda e: webbrowser.open(KEY_DOC_URL))
         self.hotkey_frame.grid(row=9, column=0, columnspan=2, sticky='EW')
         
         self.update_visibility()
-    
+
     def build_advanced_tab(self, parent):
         """Build advanced settings tab (Previously hidden settings)"""
         pad = {'padx': 8, 'pady': 4}
         
         # Warning label
-        warning = ttk.Label(parent, text="⚠️ Advanced Settings - Change only if you know what you're doing", 
+        warning = ttk.Label(parent, text="⚠️ Advanced Settings - Change only if you know what you're doing",
                            foreground='red', font=('Arial', 9, 'bold'))
         warning.grid(row=0, column=0, columnspan=3, pady=10)
         
@@ -250,7 +268,7 @@ class TriggerBotUI:
         
         # Reset to defaults button
         ttk.Button(parent, text='Reset to Defaults', command=self.reset_advanced_defaults).grid(row=6, column=0, columnspan=3, pady=10)
-    
+
     def build_control_panel(self):
         """Build control panel at bottom"""
         control_frame = ttk.Frame(self.root)
@@ -284,12 +302,11 @@ class TriggerBotUI:
         
         footer = tk.Label(control_frame, text='Made by Ozymo MIT license', font=('Arial', 8, 'italic'))
         footer.pack()
-    
+
     def reset_advanced_defaults(self):
         """Reset advanced settings to defaults"""
         if messagebox.askyesno("Reset Advanced Settings", "Reset all advanced settings to default values?"):
             defaults = self.config_manager.default_config
-            
             self.target_color_tol.set(defaults['target_color_tolerance'])
             self.target_color_r.set(defaults['target_color'][0])
             self.target_color_g.set(defaults['target_color'][1])
@@ -304,7 +321,7 @@ class TriggerBotUI:
             self.rays_per_direction.set(defaults['rays_per_direction'])
             self.ray_angle_spread.set(defaults['ray_angle_spread'])
             self.num_threads.set(defaults['num_threads'])
-    
+
     def save_config(self):
         """Save all settings to config file"""
         try:
@@ -340,10 +357,9 @@ class TriggerBotUI:
             self.config = config
             self.detection_engine.reload_config(config)
             messagebox.showinfo("Success", "Configuration saved successfully!")
-            
         except Exception as e:
             messagebox.showerror("Error", f"Failed to save config: {e}")
-    
+
     def toggle(self):
         """Toggle bot running state"""
         self.running = not self.running
@@ -351,32 +367,42 @@ class TriggerBotUI:
         self.update_status()
         
         if self.running:
+            # Initialize KMNet if using kmnet method
+            if self.method_var.get() == 'kmnet':
+                self.input_manager.init_kmnet_if_needed()
+            
             self.detection_engine.start_capture()
             threading.Thread(target=self.bot_loop, daemon=True).start()
+            print("🚀 Bot started!")
         else:
             self.detection_engine.stop_capture()
-    
+            print("🛑 Bot stopped!")
+
     def bot_loop(self):
-        """Main bot execution loop"""
+        """Main bot execution loop with KMNet support"""
         last_fire = 0
-        
         while self.running:
             should_fire = self.detection_engine.get_should_fire_state()
             cross_ok = not self.cross_check.get() or self.detection_engine.get_crosshair_state()
             now = time.time()
             cooldown = max(self.cycle_max.get(), 1) / 1000.0
-            
             mode = self.mode_var.get()
             mode_ready = (mode == 'always' or self.input_manager.get_mode_active())
-            
+
             if should_fire and cross_ok and mode_ready and (now - last_fire) > cooldown:
                 last_fire = now
                 duration = random.uniform(self.press_min.get(), self.press_max.get())
-                self.input_manager.simulate_key_press(self.key_var.get(), duration)
+                
+                # For KMNet, we use empty key name - it will use mouse click
+                if self.method_var.get() == 'kmnet':
+                    self.input_manager.simulate_key_press('', duration)
+                else:
+                    self.input_manager.simulate_key_press(self.key_var.get(), duration)
+                    
                 time.sleep(random.uniform(self.cycle_min.get(), self.cycle_max.get()) / 1000.0)
-            
+
             time.sleep(0.001)
-    
+
     def update_visibility(self):
         """Update UI visibility based on current settings"""
         method = self.method_var.get()
@@ -391,7 +417,7 @@ class TriggerBotUI:
             self.hotkey_frame.grid_remove()
         else:
             self.hotkey_frame.grid()
-    
+
     def update_status(self):
         """Update status display"""
         if not self.running:
@@ -404,7 +430,7 @@ class TriggerBotUI:
         else:
             text = 'Hold (Active)' if self.input_manager.get_mode_active() else 'Hold (Waiting)'
             self.status_label.config(text=text, fg='green')
-    
+
     def update_fps_display(self):
         """Update FPS display"""
         while True:
@@ -412,14 +438,29 @@ class TriggerBotUI:
                 fps = self.detection_engine.get_fps()
                 self.fps_label.config(text=f"{fps:.1f} FPS")
             time.sleep(0.5)
-    
+
     def ui_callback(self, action):
-        """Callback for input manager"""
-        if action == 'get_mode':
-            return self.mode_var.get()
-        elif action == 'update_status':
-            self.update_status()
-    
+        """Callback for input manager - COMPLETE IMPLEMENTATION WITH KMNET SUPPORT"""
+        try:
+            if action == 'get_mode':
+                return getattr(self, 'mode_var', tk.StringVar(value='always')).get()
+            elif action == 'get_method':
+                return getattr(self, 'method_var', tk.StringVar(value='key')).get()
+            elif action == 'get_ip':
+                return getattr(self, 'ip_var', tk.StringVar(value='')).get()
+            elif action == 'get_port':
+                return getattr(self, 'port_var', tk.StringVar(value='0')).get()
+            elif action == 'get_uuid':
+                return getattr(self, 'uuid_var', tk.StringVar(value='')).get()
+            elif action == 'update_status':
+                if hasattr(self, 'update_status'):
+                    self.update_status()
+            else:
+                return None
+        except Exception as e:
+            print(f"ui_callback error: {e}")
+            return None
+
     # Anti-detection methods (preserved from original)
     def get_random_system_icon(self):
         """Try to use a random system icon (Windows only)"""
@@ -440,7 +481,7 @@ class TriggerBotUI:
                         icon_files.append(os.path.join(path, file))
         
         return random.choice(icon_files) if icon_files else None
-    
+
     def position_window_naturally(self):
         """Position window naturally"""
         screen_width = self.root.winfo_screenwidth()
@@ -457,24 +498,22 @@ class TriggerBotUI:
         variation_x = random.randint(-30, 30)
         variation_y = random.randint(-30, 30)
         self.root.geometry(f"+{pos['x'] + variation_x}+{pos['y'] + variation_y}")
-    
+
     def rotate_window_title(self):
         """Periodically change window title"""
         while True:
             sleep_time = random.randint(30, 180)
             time.sleep(sleep_time)
-            
             if not self.root.focus_get():
                 new_title = generate_window_title()
                 self.root.title(new_title)
                 self.random_title = new_title
-    
+
     def periodically_alter_memory(self):
         """Periodically change memory patterns"""
         while True:
             sleep_time = random.randint(10, 30)
             time.sleep(sleep_time)
-            
             if hasattr(self, 'junk_memory') and self.junk_memory:
                 replace_count = min(len(self.junk_memory) // 10, 100)
                 for _ in range(replace_count):
