@@ -40,7 +40,7 @@ git clone https://github.com/ozymotv/2CT.git
 ```
 
 ### Quick Install
-Step 1: Install Python 3.10 then open CMD in the project location and run this code to install dependencies
+Step 1: Install **Python 3.10** then open CMD in the project location and run this code to install dependencies
 
 ```
 pip install -r requirements.txt
