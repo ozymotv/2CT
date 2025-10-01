@@ -6,3 +6,4 @@ keyboard>=0.13.5
 numba>=0.53.0,<0.58
 psutil>=5.8.0
 dxcam
+opencv-contrib-python
