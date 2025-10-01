@@ -50,7 +50,7 @@ Step 2: Download Visual Studio 2022 Community Edition then install -> Desktop de
 
 Step 3: Running the Application
 ```
-python triggerbot.py
+python main.py
 ```
 For debugging or visualizing the detection:
 ```
@@ -125,7 +125,7 @@ Manual Configuration (config.json)
 
 ## Contribution
 
-Feel free to submit any improvement, I will credit you.
+Feel free to submit any improvement.
 
 
 ## Authors
